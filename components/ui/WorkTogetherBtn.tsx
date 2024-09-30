@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@nextui-org/button';
 import { ArrowRight } from 'lucide-react'; 
 
 function WorkTogetherBtn() { 

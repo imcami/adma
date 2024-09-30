@@ -1,12 +1,20 @@
+'use client';
 import React from "react";
 import SectionHeading from "./SectionHeading";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
-
+import { motion } from "framer-motion";
 function ContactForm() {
   return (
+    <div>
     <div className="mb-22 px-4 sm:px-8 lg:px-16">
-      <SectionHeading>Contactanos</SectionHeading>
+  <motion.div
+      animate={{  scale: [1, 0.97, 0.97, 1] }}
+      transition={{ duration: 0.3 }}
+  >
+    
+    <SectionHeading>Contactanos</SectionHeading>
+    </motion.div>    
       <p className="flex flex-col sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl">
         Contáctanos en&nbsp;
         <a className="underline" href="mailto:admareph@gmail.com">
@@ -32,6 +40,11 @@ function ContactForm() {
           <Send className="animate-pulse ml-3 text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />{" "}
         </Button>
       </form>
+
+</div>
+
+
+
     </div>
   );
 }
