@@ -2,9 +2,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from 'resend';
 
-// const resend = new Resend('re_GtmiiBu2_NTWfYBDPMV1eLox111sppzu1');
 
-const resend = new Resend('re_i9c5nzDt_8eBDxq8mxAEHrtRjk7V5ApsC');
+
+const resend = new Resend('API_KEY_RESEND');
 
 export async function POST(req: Request) {
     try {
