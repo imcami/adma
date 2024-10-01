@@ -6,12 +6,12 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import links from "../data/links"; 
+import links from "../data/links";
 import { Menu, X } from "lucide-react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY > 50) {
@@ -36,11 +36,14 @@ export default function Home() {
     <header className="flex justify-center w-full">
       <nav
         className={`fixed transition-all duration-300 ease-in-out p-4 w-full sm:w-auto
-          ${scrolled ? 'bg-yellow-400 bg-opacity-80 backdrop-blur-lg shadow-xl' : 'bg-yellow-600 bg-opacity-60 backdrop-blur-md'}
+          ${
+            scrolled
+              ? "bg-yellow-400 bg-opacity-80 backdrop-blur-lg shadow-xl"
+              : "bg-yellow-200 hover:bg-yellow-300 bg-opacity-60 backdrop-blur-md"
+          }
           z-50 rounded-b-3xl sm:rounded-3xl`}
       >
         <div className="flex items-center justify-between w-full sm:w-auto">
-      
           <div className="sm:hidden flex items-center justify-between w-full">
             <h1 className="font-semibold text-xl text-black">ADMA</h1>
             <button onClick={toggleMenu} className="text-black p-2">
