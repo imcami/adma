@@ -38,7 +38,8 @@ export default function Home() {
   }, []);
 
   return (
-    <motion.div className="mt-3">
+    <motion.div className={scrolled ? "scrolled-class" : "" }>
+    
       <Navbar />
       <div className="w-full border-gray-300 my-48"></div>
 

@@ -34,14 +34,14 @@ export default function RootLayout({
 }>) {
   return (
     
-      <html lang="en" className="bg-gray-50">
-        <NextUIProvider>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
-        {children}
-      </body> </NextUIProvider>
-    </html>
+    <html lang="en" className="bg-gray-50">
+  <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <NextUIProvider>
+      {children}
+    </NextUIProvider>
+  </body>
+</html>
+
    
     
   );

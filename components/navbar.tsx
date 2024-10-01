@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <header className="flex justify-center w-full">
+    <header className="flex justify-center w-full mt-8">
       <nav
         className={`fixed transition-all duration-300 ease-in-out p-4 w-full sm:w-auto
           ${
