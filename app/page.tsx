@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@nextui-org/button";
@@ -8,6 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
+
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,8 +39,8 @@ export default function Home() {
   }, []);
 
   return (
-    <motion.div className={scrolled ? "scrolled-class" : "" }>
-    
+    <motion.div className={scrolled ? "scrolled-class" : ""}>
+        
       <Navbar />
       <div className="w-full border-gray-300 my-48"></div>
 

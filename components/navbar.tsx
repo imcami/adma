@@ -8,6 +8,10 @@ import {
 } from "@/components/ui/navigation-menu";
 import links from "../data/links";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +37,20 @@ export default function Home() {
   };
 
   return (
-    <header className="flex justify-center w-full mt-8">
+    <header className="flex justify-center w-full ">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div className="mb-8 md:mb-0">
+      <Link href="/" className="text-2xl font-bold">
+        <Image
+          src="/logo.png"
+          alt="adma real estate photography logo"
+          width={210}
+          height={140}
+          className="inline-block rounded-xl"
+        />
+      </Link>
+    </div>
+            </div>
       <nav
         className={`fixed transition-all duration-300 ease-in-out p-4 w-full sm:w-auto
           ${
@@ -41,7 +58,7 @@ export default function Home() {
               ? "bg-yellow-400 bg-opacity-80 backdrop-blur-lg shadow-xl"
               : "bg-yellow-200 hover:bg-yellow-300 bg-opacity-60 backdrop-blur-md"
           }
-          z-50 rounded-b-3xl sm:rounded-3xl`}
+          z-50 rounded-b-3xl sm:rounded-3xl mt-20`}
       >
         <div className="flex items-center justify-between w-full sm:w-auto">
           <div className="sm:hidden flex items-center justify-between w-full">
