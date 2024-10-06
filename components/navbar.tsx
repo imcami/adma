@@ -11,18 +11,12 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-
-
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    setScrolled(window.scrollY > 50);
   };
 
   useEffect(() => {
@@ -33,24 +27,24 @@ export default function Home() {
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev); 
   };
 
   return (
-    <header className="flex justify-center w-full ">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-    <div className="mb-8 md:mb-0">
-      <Link href="/" className="text-2xl font-bold">
-        <Image
-          src="/logo.png"
-          alt="adma real estate photography logo"
-          width={210}
-          height={140}
-          className="inline-block rounded-xl"
-        />
-      </Link>
-    </div>
-            </div>
+    <header className="flex justify-center w-full">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="mb-8 md:mb-0">
+          <Link href="/" className="text-2xl font-bold">
+            <Image
+              src="/logo.png"
+              alt="ADMA Real Estate Photography Logo"
+              width={210}
+              height={140}
+              className="inline-block rounded-xl"
+            />
+          </Link>
+        </div>
+      </div>
       <nav
         className={`fixed transition-all duration-300 ease-in-out p-4 w-full sm:w-auto
           ${
@@ -68,7 +62,6 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Menú en pantallas grandes */}
           <NavigationMenu className="hidden sm:flex">
             <NavigationMenuList className="flex">
               {links.map((link) => (
@@ -87,7 +80,7 @@ export default function Home() {
           </NavigationMenu>
         </div>
 
-        {/* Menú desplegable para pantallas pequeñas */}
+
         {isMenuOpen && (
           <div className="absolute top-16 left-0 w-full bg-yellow-500 bg-opacity-90 backdrop-blur-xl shadow-xl p-8 rounded-b-3xl sm:hidden transition-transform duration-300 ease-in-out">
             {links.map((link) => (
@@ -95,7 +88,7 @@ export default function Home() {
                 key={link.url}
                 href={link.url}
                 className="block text-center text-white font-medium text-lg hover:bg-yellow-200 hover:text-black rounded-lg py-3 transition-colors duration-300 ease-in-out"
-                onClick={toggleMenu}
+                onClick={toggleMenu} 
               >
                 {link.name}
               </a>

@@ -63,6 +63,7 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animate'),
+    [require("tw-elements/plugin.cjs")],
     nextui({
       layout: {}
     }),

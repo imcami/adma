@@ -6,17 +6,21 @@
 /* Importa las fuentes desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
 
-body {
-  font-family: 'Montserrat', sans-serif; /* Fuente moderna y profesional */
+html, body {
+  font-family: 'Montserrat', sans-serif; 
+    max-width: 100%;
+    overflow-x: hidden;
+
+  
 }
 
 @layer base {
   :root {
-    --background: #f9fafb; /* Suave color de fondo */
-    --foreground: #002147; /* Texto oscuro */
-    --primary: #ffcc00; /* Color dorado para elementos destacados */
-    --border: rgba(0, 0, 0, 0.1); /* Borde suave */
-    --radius: 1rem; /* Bordes redondeados */
+    --background: #f9fafb; 
+    --foreground: #002147;
+    --primary: #ffcc00; 
+    --border: rgba(0, 0, 0, 0.1); 
+    --radius: 1rem;
   }
 }
 
@@ -45,4 +49,25 @@ body {
 
 .borderBlack {
   @apply border-black/10;
+}
+.carousel {
+  overflow: hidden; /* Evitar que se vean elementos fuera del contenedor */
+}
+
+.carousel-content {
+  display: flex;
+  align-items: center;
+}
+
+.carousel-item {
+  flex: 0 0 33%; /* Cada imagen ocupa 33% del ancho */
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:first-child {
+  margin-left: -30%; /* Para desplazar la imagen de la izquierda */
+}
+
+.carousel-item:last-child {
+  margin-right: -30%; /* Para desplazar la imagen de la derecha */
 }

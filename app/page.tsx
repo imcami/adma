@@ -8,6 +8,9 @@ import ContactForm from "@/components/ContactForm";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
+import Slider from "@/components/ui/homeSlider";
+
+import Services from "@/components/services";
 
 
 export default function Home() {
@@ -42,59 +45,48 @@ export default function Home() {
     <motion.div className={scrolled ? "scrolled-class" : ""}>
         
       <Navbar />
-      <div className="w-full border-gray-300 my-48"></div>
+      <div className="w-full border-gray-300 my-28"></div>
 
-      <main className="flex flex-col gap-16 items-center w-full">
-        <motion.section
-          initial={{ x: "-100%", opacity: 0 }} // Desde la izquierda
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: "100%", opacity: 0 }} // Sale hacia la derecha
-          transition={{ duration: 2 }}
-          id="inicio"
-          className="w-full flex flex-col items-center"
-        >
-          <motion.h1
-            initial={{ y: 0 }} // Estado inicial
-            animate={isVisible ? { opacity: 100 } : { opacity: 80 }} // Animación
-            transition={{ duration: 1 }}
-            className="text-4xl sm:text-6xl font-light text-center text-black w-1/2"
-          >
-            Contrata tu sesión de fotos para vender o alquilar tu propiedad
-          </motion.h1>
+      <main className="flex flex-col gap-12 items-center min-h-screen">
+      <section
+  id="inicio"
+  className="w-full flex flex-col items-center"
+>
+  <h1 className="text-4xl sm:text-6xl font-light text-black text-center w-1/2">
+    Contrata tu sesión de fotos para vender o alquilar tu propiedad
+  </h1>
+  <p className="flex justify-center text-justify text-xl mt-8 text-gray-700 w-full sm:max-w-3xl">
+    Incrementamos el valor de tus propiedades
+  </p>
+  <p className="flex justify-center text-justify text-xl mb-8 text-gray-700 w-full sm:max-w-3xl">
+    con fotos y videos profesionales
+  </p>
+  <div className="flex flex-col sm:flex-row gap-4 mt-4">
+    <WorkTogetherBtn />
+  </div>     
+</section>
 
-          <p className="flex justify-center text-justify text-xl mt-8 text-gray-700 w-full sm:max-w-3xl">
-            Incrementamos el valor de tus propiedades{" "}
-          </p>
-          <p className="flex justify-center text-justify text-xl mb-8  text-gray-700 w-full sm:max-w-3xl">
-            con fotos y videos profesionales
-          </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <div>
-              <WorkTogetherBtn />
-            </div>
+      <div className="flex flex-col items-center justify-center min-h-screen">
 
-            <Button
-              variant="flat"
-              className="p-3 flex rounded-xl hover:bg-yellow-200 hover:text-black hover:shadow-xl shadow-md transition duration-300"
-            >
-              Saber más
-            </Button>
-          </div>
-        </motion.section>
+        <Slider />
+      </div>
+      <section id="servicios" className=" items-center  ">
 
+      <Services />
+
+        </section>
         <div className="w-full border-gray-300 my-20"></div>
+   
 
         <motion.section
-          initial={{ x: "100%", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: "-100%", opacity: 0 }}
+          
           transition={{ duration: 1.35 }}
           id="proyectos"
         >
-          <div className="w-full text-center">
+          <div className="">
             <SectionHeading>Proyectos</SectionHeading>
-            <p className="text-center text-xl m-3 p-3 font-light w-full sm:max-w-3xl">
+            <p className="text-center text-xl m-3 p-3 font-light">
               Hemos trabajado con una amplia gama de propiedades en Bávaro,
               Punta Cana y sus alrededores. Desde apartamentos modernos hasta
               villas de lujo, nuestro equipo se adapta a las necesidades de cada
@@ -122,9 +114,7 @@ export default function Home() {
               de cada propiedad, resaltando sus mejores características y
               creando una experiencia visual única.
             </p>
-            <Button className="flex justify-center items-center mx-auto bg-yellow-200 text-black rounded-full px-5 py-3 mt-5 shadow-md transition-all hover:bg-yellow-300">
-              Conoce al equipo <ArrowRight className="animate-pulse ml-3" />
-            </Button>
+            
           </div>
         </section>
 
@@ -150,12 +140,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="flex gap-6 text-sm flex-wrap items-center justify-center w-full mb-12">
-        <div>
-          <p className="text-center text-gray-500 font-light">
-            &copy; {new Date().getFullYear()} ADMA | Todos los derechos
-            reservados
-          </p>
-        </div>
+       
         <div>
           <a
             href="#"
@@ -171,6 +156,12 @@ export default function Home() {
           >
             Términos y condiciones
           </a>
+        </div>
+        <div>
+          <p className="text-center text-gray-500 font-light">
+            ADMA {new Date().getFullYear()}   &copy; | Todos los derechos
+            reservados 
+          </p>
         </div>
         <div>
           <a

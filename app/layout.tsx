@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../public/globals.css";
 import { NextUIProvider } from '@nextui-org/system';
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,6 +41,7 @@ export default function RootLayout({
       {children}
     </NextUIProvider>
   </body>
+  <Analytics/>
 </html>
 
    
