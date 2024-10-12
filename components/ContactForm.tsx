@@ -48,24 +48,29 @@ function ContactForm() {
   };
 
   return (
-    <div className="mb-22 px-4 sm:px-8 lg:px-16">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16">
       <motion.div
         animate={{ scale: [1, 0.97, 0.97, 1] }}
         transition={{ duration: 0.3 }}
       >
         <SectionHeading>Contáctanos</SectionHeading>
       </motion.div>
-      <p className="flex flex-col sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl">
+
+      <p className="flex flex-col sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl text-center">
         Contáctanos en&nbsp;
         <a className="underline" href="mailto:adma.reph@gmail.com">
           adma.reph@gmail.com
         </a>
         &nbsp;o mediante este formulario.
       </p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-10">
+
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-4 mt-10 w-full max-w-lg"
+      >
         <input
           required
-          className="h-14 px-4 rounded-lg border border-black w-full sm:max-w-lg focus:outline-yellow-300 "
+          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -74,30 +79,32 @@ function ContactForm() {
 
         <input
           required
-          className="h-14 px-4 rounded-lg border border-black w-full sm:max-w-lg focus:outline-yellow-300"
+          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Tu email: you@email.com"
         />
+
         <textarea
           required
           maxLength={500}
-          className="h-40 p-4 rounded-lg border border-black w-full sm:max-w-lg my-3 focus:outline-yellow-300"
+          className="h-40 p-4 rounded-lg border border-black w-full my-3 focus:outline-yellow-300"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Déjanos tu mensaje y te responderemos a la brevedad"
         />
+
         <Button
-          className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] sm:w-[10rem] bg-yellow-200 text-black rounded-full shadow-md transition-all hover:bg-yellow-300 focus:scale-110 "
+          className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] sm:w-[10rem] bg-lime-600 text-white rounded-full shadow-md transition-all hover:bg-lime-900 focus:scale-110"
           type="submit"
           disabled={loading}
         >
           {loading ? "Enviando..." : "Enviar"}
-          <Send className="animate-pulse ml-3 text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <Send className="animate-pulse ml-3 text-[--secondary] text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
         </Button>
 
-        {/* Modal de éxito */}
+
         <AnimatePresence>
           {success && (
             <motion.div
@@ -126,7 +133,7 @@ function ContactForm() {
           )}
         </AnimatePresence>
 
-        {/* Modal de error */}
+
         <AnimatePresence>
           {error && (
             <motion.div

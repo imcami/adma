@@ -7,9 +7,10 @@ interface links {
 const links: links[] = [
     { name: 'Inicio', url: '#inicio' },
     { name: 'Servicios', url: '#servicios' },
-    { name: 'Proyectos', url: '#proyectos' },
+    { name: 'Checklist antes de la sesión', url: '#checklist' },
     { name: 'Sobre nosotros', url: '#nosotros' },
     { name: 'Contacto', url: '#contacto' },
+
   ];
   
 

@@ -4,10 +4,11 @@
 
 
 /* Importa las fuentes desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
 
 html, body {
-  font-family: 'Montserrat', sans-serif; 
+  font-family: 'noto-serif', serif; 
     max-width: 100%;
     overflow-x: hidden;
 
@@ -16,9 +17,11 @@ html, body {
 
 @layer base {
   :root {
-    --background: #f9fafb; 
-    --foreground: #002147;
-    --primary: #ffcc00; 
+    --background: #FCCD2A; 
+    --foreground: #347928;
+    --primary:#FCCD2A; 
+    --secondary: #FFFBE6;
+    --tertiary: #C0EBA6;
     --border: rgba(0, 0, 0, 0.1); 
     --radius: 1rem;
   }

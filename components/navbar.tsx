@@ -10,6 +10,8 @@ import links from "../data/links";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {  FaInstagram, FaWhatsapp } from "react-icons/fa";
+
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,75 +29,77 @@ export default function Home() {
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev); 
+    setIsMenuOpen((prev) => !prev);
   };
 
   return (
-    <header className="flex justify-center w-full">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="mb-8 md:mb-0">
-          <Link href="/" className="text-2xl font-bold">
-            <Image
-              src="/logo.png"
-              alt="ADMA Real Estate Photography Logo"
-              width={210}
-              height={140}
-              className="inline-block rounded-xl"
-            />
-          </Link>
-        </div>
-      </div>
-      <nav
-        className={`fixed transition-all duration-300 ease-in-out p-4 w-full sm:w-auto
-          ${
-            scrolled
-              ? "bg-yellow-400 bg-opacity-80 backdrop-blur-lg shadow-xl"
-              : "bg-yellow-200 hover:bg-yellow-300 bg-opacity-60 backdrop-blur-md"
-          }
-          z-50 rounded-b-3xl sm:rounded-3xl mt-20`}
-      >
-        <div className="flex items-center justify-between w-full sm:w-auto">
-          <div className="sm:hidden flex items-center justify-between w-full">
-            <h1 className="font-semibold text-xl text-black">ADMA</h1>
-            <button onClick={toggleMenu} className="text-black p-2">
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+    <header className="fixed top-0 left-0 w-full bg-white z-50 border-b-1 border-b-gray-90 bg-opacity-90 backdrop-blur-md shadow-md">
+      <div className="container mx-auto flex justify-between items-center py-2 px-6">
+        {/* Logo a la izquierda */}
+        <Link href="/" className="text-2xl font-bold">
+          <Image
+            src="/logo.png"
+            alt="ADMA Real Estate Photography Logo"
+            width={160}
+            height={110}
+            className="inline-block rounded-xl"
+          />
+        </Link>
 
-          <NavigationMenu className="hidden sm:flex">
-            <NavigationMenuList className="flex">
+        {/* Links centrados */}
+        <nav className="hidden sm:flex justify-center w-full">
+          <NavigationMenu>
+            <NavigationMenuList className="flex gap-8 items-center">
               {links.map((link) => (
                 <NavigationMenuItem key={link.url}>
                   <NavigationMenuLink asChild>
-                    <a
+                    <Link
                       href={link.url}
-                      className="hover:bg-yellow-200 hover:border-yellow-300 hover:shadow-xl hover:text-black rounded-xl m-2 p-2 font-light transition-colors duration-300 ease-in-out"
+                      className="text-black hover:text-gray-600 transition-colors"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
           </NavigationMenu>
+        </nav>
+
+        {/* Iconos de redes sociales al extremo derecho */}
+        <div className="flex gap-4 items-center">
+         
+          <Link href="https://wa.me/18495153010" className="text-black hover:text-gray-600 transition-colors">
+            <FaWhatsapp size={28} />
+          </Link>
+           <Link
+            href="https://www.instagram.com/adma.reph?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            className="text-black hover:text-gray-600 transition-colors"
+          >
+            <FaInstagram size={28} />
+          </Link>
         </div>
 
+        {/* Botón para menú móvil */}
+        <button onClick={toggleMenu} className="text-black sm:hidden p-2">
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
 
+        {/* Menú desplegable para dispositivos móviles */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 w-full bg-yellow-500 bg-opacity-90 backdrop-blur-xl shadow-xl p-8 rounded-b-3xl sm:hidden transition-transform duration-300 ease-in-out">
+          <div className="absolute top-full left-0 w-full bg-white shadow-lg sm:hidden">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.url}
                 href={link.url}
-                className="block text-center text-white font-medium text-lg hover:bg-yellow-200 hover:text-black rounded-lg py-3 transition-colors duration-300 ease-in-out"
-                onClick={toggleMenu} 
+                className="block p-4 text-black hover:bg-gray-100"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 }

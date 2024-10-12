@@ -5,6 +5,7 @@ import "../public/globals.css";
 import { NextUIProvider } from '@nextui-org/system';
 import { Analytics } from "@vercel/analytics/react"
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -35,8 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     
-    <html lang="en" className="bg-gray-50">
+    <html lang="es" className="	">
   <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+ 
     <NextUIProvider>
       {children}
     </NextUIProvider>

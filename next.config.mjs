@@ -16,20 +16,20 @@ const nextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
+  // async headers() {
+  //   return [
+  //     {
 
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; font-src 'self';",
-          },
-        ],
-      },
-    ];
-  },
+  //       source: "/(.*)",
+  //       headers: [
+  //         {
+  //           key: "Content-Security-Policy",
+  //           value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com; connect-src 'self'; font-src 'self';",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 
 };
 
