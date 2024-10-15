@@ -13,7 +13,6 @@ function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const [inView, setInView] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -55,9 +54,7 @@ function ContactForm() {
         const rect = contactRef.current.getBoundingClientRect();
 
         if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-          setInView(true);
-        } else {
-          setInView(false);
+          // Aquí se eliminó setInView
         }
       }
     };
@@ -76,19 +73,19 @@ function ContactForm() {
     >
       <div>
         <SectionHeading>
-          <span className='text-4xl'> Contáctanos </span> 
-          </SectionHeading>
-      <div>
+          <span className="text-4xl"> Contáctanos </span>
+        </SectionHeading>
+        <div>
+          <p className="flex flex-col text-lg sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl ">
+            Contáctanos en&nbsp;
+            <a className="underline" href="mailto:adma.reph@gmail.com">
+              adma.reph@gmail.com
+            </a>
+            &nbsp;o mediante este formulario.
+          </p>
+        </div>
+      </div>
 
-      <p className="flex flex-col text-lg sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl ">
-        Contáctanos en&nbsp;
-        <a className="underline" href="mailto:adma.reph@gmail.com">
-          adma.reph@gmail.com
-        </a>
-        &nbsp;o mediante este formulario.
-      </p>
-</div>
-</div>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center gap-4 mt-10 w-full max-w-lg bg-white bg-opacity-90 p-6 rounded-lg shadow-lg"
@@ -184,7 +181,6 @@ function ContactForm() {
         </AnimatePresence>
       </form>
     </div>
-
   );
 }
 

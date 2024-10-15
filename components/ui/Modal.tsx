@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Modal = ({ isOpen, onClose, imageUrl }: { isOpen: boolean; onClose: () => void; imageUrl: string | null }) => {
@@ -12,7 +13,7 @@ const Modal = ({ isOpen, onClose, imageUrl }: { isOpen: boolean; onClose: () => 
         >
           &times;
         </button>
-        <img src={imageUrl} alt="Modal" className="p-8 max-w-full max-h-screen" />
+        <Image src={imageUrl} alt="Modal" className="p-8 max-w-full max-h-screen" />
       </div>
     </div>
   );

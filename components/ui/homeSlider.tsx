@@ -27,6 +27,8 @@ const HorizontalScrollCarousel = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    const target = targetRef.current; 
+  
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,18 +45,18 @@ const HorizontalScrollCarousel = () => {
       },
       { threshold: 0.2 }
     );
-
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
+  
+    if (target) {
+      observer.observe(target);
     }
-
+  
     return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
+      if (target) { 
+        observer.unobserve(target);
       }
     };
   }, []);
-
+  
   const handleImageClick = (index: number) => {
     setSelectedCardIndex(index);
     setIsModalOpen(true);
@@ -158,7 +160,7 @@ const Modal = ({
         
        
         <Image
-          src={imageUrl}
+          src={imageUrl ?? '/img/PL/p6.webp' }
           layout="responsive" 
           width={3200} 
           height={2000} 
