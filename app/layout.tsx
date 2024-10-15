@@ -37,6 +37,7 @@ export default function RootLayout({
   return (
     
     <html lang="es" className="	">
+      
   <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
  
     <NextUIProvider>
