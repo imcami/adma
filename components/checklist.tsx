@@ -11,69 +11,92 @@ import {
 const Checklist = () => {
   return (
     <section
-      className="w-full top-0 flex justify-center flex-col items-center bg-[--tertiary] bg-opacity-90 backdrop-blur-md h-[90rem]"
+      className="w-full max-w-7xl mx-auto flex flex-col  rounded-xl items-center bg-gradient-to-b from-white to-gray-100 min-h-screen py-16 px-4"
       id="checklist"
     >
-      <h1 className="text-4xl font-semibold text-shadow-xl top-0">
+      <h1 className="text-5xl font-bold text-gray-800 mb-6 text-center">
         Prepara tu Hogar para la Fotografía Inmobiliaria
       </h1>
-      <h1 className="text-2xl">
+      <h2 className="text-2xl text-gray-600 mb-12 text-center">
         Atrae compradores con imágenes impresionantes
-      </h1>
+      </h2>
 
-      <div className="">
-        <h2 className="text-xl py-12">Lista de Verificación Pre-Sesión</h2>
-        <Accordion type="single" collapsible>
-          <AccordionItem value="exterior">
-            <AccordionTrigger className=" bg-white text-xl ">
-              <p className="text-black  items-center flex justify-center">
-                Exterior
+      <div className="w-full max-w-4xl">
+        <h3 className="text-3xl py-8 text-gray-700 border-b border-gray-300">
+          Lista de Verificación Pre-Sesión
+        </h3>
+        <Accordion type="single" collapsible className="space-y-4">
+          <AccordionItem
+            value="exterior"
+            className="bg-white shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-2xl"
+          >
+            <AccordionTrigger className="text-xl bg-gray-100 p-4 rounded-t-lg hover:bg-gray-200 flex justify-between items-center">
+              <p className="text-gray-700 font-sans">
+                ¿Cómo debo preparar el interior de la propiedad?
               </p>
             </AccordionTrigger>
-            <AccordionContent>
-              <ul>
-                <li className='text-lg'>Retira vehículos de la entrada.</li>
-                <li className='text-lg'>Limpia las ventanas.</li>
+            <AccordionContent className="bg-gray-50 p-6 text-lg">
+              <ul className="space-y-3 text-gray-600 leading-relaxed">
+                <li>
+                  • Despejar el espacio: Retira objetos personales, como fotos
+                  familiares y recuerdos, para que los posibles compradores
+                  puedan imaginarse viviendo allí.
+                </li>
+                <li>
+                  • Limpiar a fondo: Asegúrate de que todos los espacios estén
+                  limpios. Presta especial atención a ventanas, pisos y baños.
+                </li>
+                <li>
+                  • Iluminación: Abre cortinas y persianas para permitir la
+                  entrada de luz natural.
+                </li>
+                <li>
+                  • Organización del Mobiliario: Coloca los muebles de manera
+                  que fluyan bien y no bloqueen el paso.
+                </li>
               </ul>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="interior">
-            <AccordionTrigger className=" bg-white text-xl ">
-              <p className="text-black  items-center flex justify-center">
-                Interior
+
+          <AccordionItem
+            value="interior"
+            className="bg-white shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-2xl"
+          >
+            <AccordionTrigger className="text-xl bg-gray-100 p-4 rounded-t-lg hover:bg-gray-200 flex justify-between items-center">
+              <p className="text-gray-700 font-sans">
+                ¿Cuál es la mejor manera para preparar el exterior?
               </p>
             </AccordionTrigger>
-            <AccordionContent>
-              <ul>
-                <li className='text-lg'>Reemplaza bombillas fundidas.</li>
-                <li className='text-lg'>Elimina pertenencias personales.</li>
-                {/* Agregar más puntos */}
+            <AccordionContent className="bg-gray-50 p-6 text-lg">
+              <ul className="space-y-3 text-gray-600 leading-relaxed">
+                <li>• Mantén el jardín o área exterior bien cuidado.</li>
+                <li>• Corta el césped, recorta arbustos y retira hojas muertas.</li>
+                <li>• Asegúrate de que la entrada sea acogedora.</li>
               </ul>
             </AccordionContent>
           </AccordionItem>
-          {/* Secciones adicionales para Cocina y Baños */}
         </Accordion>
       </div>
 
-      <Card className="mt-32 bg-[--secondary]">
-        <CardTitle className="text-lg flex ml-6 ">
-          Mejores Prácticas a Considerar
+      <Card className="mt-16 w-full max-w-3xl bg-gradient-to-r from-emerald-800 to-emerald-900 shadow-xl rounded-lg">
+        <CardTitle className="text-2xl p-6 text-yellow-500 font-semibold">
+          Detalles Finales
         </CardTitle>
-        <CardContent>
-          <ul >
-            <li className='text-xl'>Se recomienda un recorrido con el fotógrafo.</li>
-            <li className='text-xl'>Las mascotas deben estar fuera del hogar.</li>
+        <CardContent className="p-6">
+          <ul className="space-y-4 text-lg text-yellow-400 leading-relaxed">
+            <li>
+              Agrega toallas limpias y bien dobladas en los baños, y asegúrate
+              de que la cocina esté ordenada.
+            </li>
+            <li>Las mascotas deben estar fuera del hogar.</li>
+            <li>
+              <div className="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700">
+                <strong>Revisión Final:</strong> Antes de la sesión, da un último vistazo a cada habitación para asegurarte de que todo esté en su lugar.
+              </div>
+            </li>
           </ul>
         </CardContent>
       </Card>
-      <div className="pt-12">
-        <Button
-          className="font-sans pt-3 h-12 px-6 items-center"
-          variant="default"
-        >
-          ¡Contáctanos para Consejos de Estilismo Expertos!
-        </Button>
-      </div>
     </section>
   );
 };

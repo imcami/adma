@@ -10,8 +10,8 @@ import links from "../data/links";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {  FaInstagram, FaWhatsapp } from "react-icons/fa";
-
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,32 +33,46 @@ export default function Home() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white z-50 border-b-1 border-b-gray-90 bg-opacity-90 backdrop-blur-md shadow-md">
+    <motion.header
+      className={`fixed top-0 left-0 w-full z-50 bg-opacity-90 backdrop-blur-md shadow-md transition-all ${
+        scrolled ? "bg-white border-b-gray-90 border-b-10 " : "bg-transparent "
+      }`}
+      initial={{ y: -100 }} 
+      animate={{ y: 0 }} 
+      transition={{ duration: 0.5 }} 
+    >
       <div className="container mx-auto flex justify-between items-center py-2 px-6">
-        {/* Logo a la izquierda */}
+        {/* Logo */}
         <Link href="/" className="text-2xl font-bold">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="ADMA Real Estate Photography Logo"
-            width={160}
-            height={110}
-            className="inline-block rounded-xl"
+            width={90}
+            height={90}
+            blurDataURL="/path/to/lowres-image.jpg"
+            className="inline-block rounded-full"
           />
         </Link>
 
-        {/* Links centrados */}
+        {/* Navigation links */}
         <nav className="hidden sm:flex justify-center w-full">
           <NavigationMenu>
             <NavigationMenuList className="flex gap-8 items-center">
               {links.map((link) => (
-                <NavigationMenuItem key={link.url}>
+                <NavigationMenuItem 
+                className="hover:scale-110 " key={link.url}>
                   <NavigationMenuLink asChild>
-                    <Link
-                      href={link.url}
-                      className="text-black hover:text-gray-600 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
+                  <Link
+  href={link.url}
+  className={`font-sans font-semibold drop-shadow-sm transition-colors duration-300 ${
+    scrolled
+      ? "text-[--foreground] hover:text-green-600 "
+      : "text-[--background]  hover:text-yellow-200 " 
+  }`}
+>
+  {link.name}
+</Link>
+
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
@@ -66,26 +80,32 @@ export default function Home() {
           </NavigationMenu>
         </nav>
 
-        {/* Iconos de redes sociales al extremo derecho */}
+        {/* Social Icons */}
         <div className="flex gap-4 items-center">
-         
-          <Link href="https://wa.me/18495153010" className="text-black hover:text-gray-600 transition-colors">
+          <Link
+            href="https://wa.me/18495153010"
+            className={`transition-colors ${
+              scrolled ? "text-[--foreground]" : "text-[--background]"
+            }`}
+          >
             <FaWhatsapp size={28} />
           </Link>
-           <Link
-            href="https://www.instagram.com/adma.reph?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-            className="text-black hover:text-gray-600 transition-colors"
+          <Link
+            href="https://www.instagram.com/adma.reph"
+            className={`transition-colors ${
+              scrolled ? "text-[--foreground]" : "text-[--background]"
+            }`}
           >
             <FaInstagram size={28} />
           </Link>
         </div>
 
-        {/* Botón para menú móvil */}
+        {/* Mobile Menu Button */}
         <button onClick={toggleMenu} className="text-black sm:hidden p-2">
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Menú desplegable para dispositivos móviles */}
+        {/* Mobile Dropdown Menu */}
         {isMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white shadow-lg sm:hidden">
             {links.map((link) => (
@@ -100,6 +120,6 @@ export default function Home() {
           </div>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }

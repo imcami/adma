@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SectionHeading from "./SectionHeading";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
@@ -13,6 +13,8 @@ function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [inView, setInView] = useState(false);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,63 +49,85 @@ function ContactForm() {
     }
   };
 
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16">
-      <motion.div
-        animate={{ scale: [1, 0.97, 0.97, 1] }}
-        transition={{ duration: 0.3 }}
-      >
-        <SectionHeading>Contáctanos</SectionHeading>
-      </motion.div>
+  useEffect(() => {
+    const handleScroll = () => {
+      if (contactRef.current) {
+        const rect = contactRef.current.getBoundingClientRect();
 
-      <p className="flex flex-col sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl text-center">
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          setInView(true);
+        } else {
+          setInView(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={contactRef}
+      className="min-h-screen flex flex-col items-center justify-center mb-32 px-4 sm:px-8 lg:px-16 bg-cover bg-center backdrop-blur"
+      style={{ backgroundImage: "url('/img/CVII/2.webp')" }}
+    >
+      <div>
+        <SectionHeading>
+          <span className='text-4xl'> Contáctanos </span> 
+          </SectionHeading>
+      <div>
+
+      <p className="flex flex-col text-lg sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl ">
         Contáctanos en&nbsp;
         <a className="underline" href="mailto:adma.reph@gmail.com">
           adma.reph@gmail.com
         </a>
         &nbsp;o mediante este formulario.
       </p>
-
+</div>
+</div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center gap-4 mt-10 w-full max-w-lg"
+        className="flex flex-col items-center gap-4 mt-10 w-full max-w-lg bg-white bg-opacity-90 p-6 rounded-lg shadow-lg"
       >
-        <input
+        <motion.input
           required
-          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300"
+          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300 hover:bg-gray-200 transition duration-300"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Tu nombre"
         />
 
-        <input
+        <motion.input
           required
-          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300"
+          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300 hover:bg-gray-200 transition duration-300"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Tu email: you@email.com"
         />
 
-        <textarea
+        <motion.textarea
           required
           maxLength={500}
-          className="h-40 p-4 rounded-lg border border-black w-full my-3 focus:outline-yellow-300"
+          className="h-40 p-4 rounded-lg border border-black w-full my-3 focus:outline-yellow-300 hover:bg-gray-200 transition duration-300"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Déjanos tu mensaje y te responderemos a la brevedad"
         />
 
         <Button
-          className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] sm:w-[10rem] bg-lime-600 text-white rounded-full shadow-md transition-all hover:bg-lime-900 focus:scale-110"
+          className="group flex items-center justify-center gap-2 h-[3rem] font-sans text-md  w-[8rem] sm:w-[10rem] bg-lime-900 text-white rounded-full shadow-md transition-all hover:bg-lime-700 focus:scale-110"
           type="submit"
           disabled={loading}
         >
           {loading ? "Enviando..." : "Enviar"}
-          <Send className="animate-pulse ml-3 text-[--secondary] text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <Send className="animate-pulse ml-3 f text-[--secondary] text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
         </Button>
-
 
         <AnimatePresence>
           {success && (
@@ -133,7 +157,6 @@ function ContactForm() {
           )}
         </AnimatePresence>
 
-
         <AnimatePresence>
           {error && (
             <motion.div
@@ -161,6 +184,7 @@ function ContactForm() {
         </AnimatePresence>
       </form>
     </div>
+
   );
 }
 

@@ -19,7 +19,7 @@ html, body {
   :root {
     --background: #FCCD2A; 
     --foreground: #347928;
-    --primary:#FCCD2A; 
+    --primary:#fccd2a; 
     --secondary: #FFFBE6;
     --tertiary: #C0EBA6;
     --border: rgba(0, 0, 0, 0.1); 
