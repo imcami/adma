@@ -1,5 +1,4 @@
-import { Button } from "@nextui-org/button";
-import { ArrowDown, BriefcaseBusiness, Minimize, Zap } from "lucide-react";
+import {  BriefcaseBusiness, Minimize, Zap } from "lucide-react";
 import React from "react";
 
 interface data {

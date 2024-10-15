@@ -160,7 +160,7 @@ const Modal = ({
         
        
         <Image
-          src={imageUrl ?? '/img/PL/p6.webp' }
+          src={imageUrl ?? '/img/PL/p6.webp ' }
           layout="responsive" 
           width={3200} 
           height={2000} 
