@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, imageUrl }: { isOpen: boolean; onClose: () => 
         >
           &times;
         </button>
-        <Image src={imageUrl} alt="Modal" className="p-8 max-w-full max-h-screen" />
+        <Image src={imageUrl ?? '' } alt="Modal" className="p-8 max-w-full max-h-screen" />
       </div>
     </div>
   );
