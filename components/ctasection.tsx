@@ -34,12 +34,12 @@ const data: data[] = [
 
 function Ctasection() {
   return (
-    <div className="w-full">
+    <div id="" className="w-full ">
       <div
         className="
           w-full 
-          h-[100vh] 
-          mx-auto 
+          h-[120vh] 
+
           flex 
           flex-col 
           items-center 
@@ -51,7 +51,7 @@ function Ctasection() {
           shadow-lg 
           text-[--primary] 
           relative
-          py-16
+         
         "
       >
         <h2 className="text-4xl text-white font-bold">

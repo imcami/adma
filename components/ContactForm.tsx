@@ -68,7 +68,7 @@ function ContactForm() {
   return (
     <div
       ref={contactRef}
-      className="min-h-screen flex flex-col items-center justify-center mb-32 px-4 sm:px-8 lg:px-16 bg-cover bg-center backdrop-blur"
+      className="min-h-screen mt-0 flex flex-col items-center justify-center mb-32  sm:px-8 lg:px-16 bg-cover bg-center backdrop-blur"
       style={{ backgroundImage: "url('/img/CVII/2.webp')" }}
     >
       <div>
@@ -92,7 +92,7 @@ function ContactForm() {
       >
         <motion.input
           required
-          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300 hover:bg-gray-200 transition duration-300"
+          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-lime-600 hover:bg-gray-200 transition duration-300"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -101,7 +101,7 @@ function ContactForm() {
 
         <motion.input
           required
-          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-yellow-300 hover:bg-gray-200 transition duration-300"
+          className="h-14 px-4 rounded-lg border border-black w-full focus:outline-lime-600 hover:bg-gray-200 transition duration-300"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -111,7 +111,7 @@ function ContactForm() {
         <motion.textarea
           required
           maxLength={500}
-          className="h-40 p-4 rounded-lg border border-black w-full my-3 focus:outline-yellow-300 hover:bg-gray-200 transition duration-300"
+          className="h-40 p-4 rounded-lg border border-black w-full my-3 focus:outline-lime-600 hover:bg-gray-200 transition duration-300"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Déjanos tu mensaje y te responderemos a la brevedad"

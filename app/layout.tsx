@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "../public/globals.css";
 import { NextUIProvider } from '@nextui-org/system';
 import { Analytics } from "@vercel/analytics/react"
-
+import  Navbar from "../components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,6 +41,7 @@ export default function RootLayout({
   <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
  
     <NextUIProvider>
+    <Navbar />
       {children}
     </NextUIProvider>
   </body>

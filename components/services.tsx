@@ -1,5 +1,6 @@
 import { Button } from '@nextui-org/button';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Images = [
@@ -64,7 +65,9 @@ function Services() {
               </div>
               <div className='p-6 flex justify-end mt-auto'>
                 <Button className='bg-[--tertiary] hover:bg-[--secondary] hover:text-[--foreground] font-sans hover:border-2 font-bold py-2 px-6 rounded-xl'>
-                  Cotizar
+                 <Link href='https://wa.me/18495153010' rel="noopener noreferrer">
+                 Cotizar
+                 </Link> 
                 </Button>
               </div>
             </div>

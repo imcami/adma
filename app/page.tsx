@@ -10,6 +10,7 @@ import Slider from "../components/ui/homeSlider";
 import Hero from "@/components/hero";
 import Checklist from "@/components/checklist";
 import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -37,7 +38,7 @@ export default function Home() {
         <Loader />
       ) : (
         <>
-          <Navbar />
+        
 
           {/* Sección de inicio */}
           <main className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -61,22 +62,20 @@ export default function Home() {
 
           <div className="w-full border-gray-300 my-20"></div>
 
-          {/* Sección Reviews */}
-          <section className="flex flex-col items-center justify-center py-20">
+          <section id="nosotros" className="flex flex-col items-center justify-center ">
+            <Ctasection />
+          </section>
+          <section >
             <Reviews />
           </section>
 
-          <div className="w-full border-gray-300 my-20"></div>
 
 
           <section id="contacto" className="flex flex-col items-center ">
-            <Ctasection />
             <div className="w-full">
               <ContactForm />
             </div>
           </section>
-
-          {/* Botón de WhatsApp */}
           <a
             href="https://wa.me/8495153010?text=Hola%20quiero%20recibir%20mas%20información%20sobre%20sesiones%20de%20fotos%20para%20una%20propiedad%20%20Hello!%20I%20would%20like%20to%20receive%20more%20information%20about%20photoshoots%20for%20a%20property"
             target="_blank"
@@ -87,23 +86,23 @@ export default function Home() {
             <FaWhatsapp style={{ fontSize: "52px" }} />
           </a>
 
-          {/* Footer */}
+
           <footer className="flex gap-6 text-sm flex-wrap items-center justify-center w-full mb-12">
             <div>
-              <a
-                href="#"
+              <Link
+                href="/policy"
                 className="text-center text-gray-500 font-light hover:text-black"
               >
                 Política de privacidad
-              </a>
+              </Link>
             </div>
             <div>
-              <a
-                href="#"
+              <Link
+                href="/terms"
                 className="text-center text-gray-500 font-light hover:text-black"
               >
-                Términos y condiciones
-              </a>
+                Términos y condiciones 
+              </Link>
             </div>
             <div>
               <p className="text-center text-gray-500 font-light">
@@ -111,14 +110,7 @@ export default function Home() {
                 reservados
               </p>
             </div>
-            <div>
-              <a
-                href="#"
-                className="text-center text-gray-500 font-light hover:text-black"
-              >
-                Contacto
-              </a>
-            </div>
+          
             <div>
               <p className="text-gray-500 font-light">Hecho por Lo Nero Camila</p>
             </div>
