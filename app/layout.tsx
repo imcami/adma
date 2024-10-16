@@ -47,7 +47,7 @@ export default function RootLayout({
     </NextUIProvider>
   </body>
   <Analytics/>
-  <meta property="og:image" content="https://www.canva.com/design/DAGTdR1f6fw/wAe3XO5THpNwNh2QdKrvZA/view"></meta>
+  <meta property="og:image" content="https://res.cloudinary.com/dyr4wt65s/image/upload/v1729099964/ldte9bw2sw4coyetfjml.png"></meta>
 </html>
 
    
