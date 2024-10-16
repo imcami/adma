@@ -6,6 +6,7 @@ import { NextUIProvider } from '@nextui-org/system';
 import { Analytics } from "@vercel/analytics/react"
 import  Navbar from "../components/navbar";
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({
     </NextUIProvider>
   </body>
   <Analytics/>
+  <meta property="og:image" content="https://www.canva.com/design/DAGTdR1f6fw/wAe3XO5THpNwNh2QdKrvZA/view"></meta>
 </html>
 
    
