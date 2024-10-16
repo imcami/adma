@@ -69,8 +69,6 @@ export default function Home() {
             <Reviews />
           </section>
 
-
-
           <section id="contacto" className="flex flex-col items-center ">
             <div className="w-full">
               <ContactForm />

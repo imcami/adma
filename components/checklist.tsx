@@ -10,7 +10,7 @@ import {
 const Checklist = () => {
   return (
     <section
-      className="w-full max-w-7xl mx-auto flex flex-col  rounded-xl items-center bg-gradient-to-b from-white to-gray-100 min-h-screen py-16 px-4"
+      className="w-full h-[90vh] max-w-7xl mx-auto flex flex-col  rounded-xl items-center bg-gradient-to-b from-white to-gray-100 min-h-screen py-16 px-4"
       id="checklist"
     >
       <h1 className="text-5xl font-bold text-gray-800 mb-6 text-center">
