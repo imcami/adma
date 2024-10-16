@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Loader from "../components/ui/loader";
-import Navbar from "../components/navbar";
 import ContactForm from "@/components/ContactForm";
 import Services from "@/components/services";
 import Reviews from "../components/reviews";
