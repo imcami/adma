@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import { Button } from "./button";
 
 const Example = () => {
   return (
-    <div className="bg-neutral-200">
+    <div className="bg-neutral-200 ">
       <HorizontalScrollCarousel />
     </div>
   );
@@ -14,35 +15,33 @@ const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const [isSticky, setIsSticky] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
+  const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
-    const target = targetRef.current; 
-  
+    const target = targetRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsSticky(true);
-          } else {
-            setIsSticky(false);
-          }
+          setIsSticky(entry.isIntersecting);
         });
       },
       { threshold: 0.2 }
     );
-  
+
     if (target) {
       observer.observe(target);
     }
-  
+
     return () => {
-      if (target) { 
+      if (target) {
         observer.unobserve(target);
       }
     };
   }, []);
-  
+
   const handleImageClick = (index: number) => {
     setSelectedCardIndex(index);
     setIsModalOpen(true);
@@ -54,56 +53,62 @@ const HorizontalScrollCarousel = () => {
   };
 
   const handleNextImage = () => {
-    setSelectedCardIndex((prev) => (prev !== null && prev < cards.length - 1 ? prev + 1 : 0));
+    setSelectedCardIndex((prev) =>
+      prev !== null && prev < cards.length - 1 ? prev + 1 : 0
+    );
   };
 
   const handlePreviousImage = () => {
-    setSelectedCardIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : cards.length - 1));
+    setSelectedCardIndex((prev) =>
+      prev !== null && prev > 0 ? prev - 1 : cards.length - 1
+    );
   };
-
-  const scrollCarousel = (direction: "left" | "right") => {
+  const scrollCarousel = (direction: "left" | "right"): void => {
     const container = targetRef.current;
     if (container) {
-      const scrollAmount = direction === "left" ? -container.clientWidth / 2 : container.clientWidth / 2; // Cambiar el desplazamiento a la mitad del ancho del contenedor
+      const scrollAmount = direction === "left" ? -container.clientWidth / 2 : container.clientWidth / 2;
       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
+  
 
   return (
     <>
-      <section ref={targetRef} className="relative h-[100vh] bg-[--secondary]">
-        <div className={`sticky top-0 flex h-screen items-center overflow-hidden transition-all duration-300 ${isSticky ? "bg-[--secondary]" : ""}`}>
-          
+<section ref={targetRef} className="relative h-[100vh] bg-[--secondary]">
+  <div
+    className={`sticky top-0 flex  h-screen items-center overflow-x-hidden transition-all duration-300 ${
+      isSticky ? "bg-[--secondary]" : ""
+    }`}
+  >
+    <Button
+      onClick={() => scrollCarousel("left")}
+      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 p-2 bg-black bg-opacity-50 rounded-lg hover:bg-gray-400 w-16 h-16 m-6" // Aumento del margen
+    >
+      <ChevronLeft size={32} className="text-white" />
+    </Button>
 
-          <button
-            onClick={() => scrollCarousel("left")}
-            className="absolute left-0 z-10 p-2 bg-black rounded-lg hover:bg-gray-400"
-          >
-            <ChevronLeft size={34} />
-          </button>
+    <div className="flex gap-2 overflow-hidden relative w-full">
+      {cards.map((card, index) => (
+        <Card card={card} key={card.id} onClick={() => handleImageClick(index)} />
+      ))}
+    </div>
 
-          <div className="flex gap-2">
-            {cards.map((card, index) => (
-              <Card card={card} key={card.id} onClick={() => handleImageClick(index )} />
-            ))}
-          </div>
+    <Button
+      onClick={() => scrollCarousel("right")}
+      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 p-2 bg-black bg-opacity-50 rounded-lg hover:bg-gray-400 w-16 h-16 m-6" // Aumento del margen
+    >
+      <ChevronRight size={32} />
+    </Button>
+  </div>
+</section>
 
-          {/* Botón de flecha derecha en el componente principal */}
-          <button
-            onClick={() => scrollCarousel("right")}
-            className="absolute right-0 z-10 p-2 bg-black rounded-lg hover:bg-gray-400"
-          >
-         <ChevronRight size={34} />
-          </button>
-        </div>
-      </section>
 
       {isModalOpen && selectedCardIndex !== null && (
-        <Modal 
-          isOpen={isModalOpen} 
-          onClose={handleCloseModal} 
-          imageUrl={cards[selectedCardIndex].url} 
-          title={cards[selectedCardIndex].title} 
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          imageUrl={cards[selectedCardIndex].url}
+          title={cards[selectedCardIndex].title}
           description={cards[selectedCardIndex].description}
           onNext={handleNextImage}
           onPrevious={handlePreviousImage}
@@ -117,7 +122,10 @@ const HorizontalScrollCarousel = () => {
 
 const Card = ({ card, onClick }: { card: CardType; onClick: () => void }) => {
   return (
-    <div className="group relative w-[90vw] sm:w-[450px] mt-52 overflow-hidden bg-lime-900 cursor-pointer" onClick={onClick}>
+    <div
+      className="group relative w-[980vh] sm:w-[450px] mt-52 overflow-hidden bg-lime-900 cursor-pointer"
+      onClick={onClick}
+    >
       <div
         style={{
           backgroundImage: `url(${card.url})`,
@@ -128,8 +136,12 @@ const Card = ({ card, onClick }: { card: CardType; onClick: () => void }) => {
       ></div>
 
       <div className="p-4">
-        <p className="text-2xl sm:text-4xl font-black uppercase text-[--secondary]">{card.title}</p>
-        <p className="text-md sm:text-lg text-[--secondary]">{card.description}</p>
+        <p className="text-2xl sm:text-4xl font-black uppercase text-[--secondary]">
+          {card.title}
+        </p>
+        <p className="text-md sm:text-lg text-[--secondary]">
+          {card.description}
+        </p>
       </div>
     </div>
   );
@@ -143,8 +155,6 @@ const Modal = ({
   description,
   onNext,
   onPrevious,
-  totalImages,
-  currentIndex,
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -153,8 +163,6 @@ const Modal = ({
   description: string;
   onNext: () => void;
   onPrevious: () => void;
-  totalImages: number;
-  currentIndex: number;
 }) => {
   if (!isOpen) return null;
 
@@ -167,9 +175,9 @@ const Modal = ({
         >
           &times;
         </button>
-        
+
         <Image
-          src={imageUrl ?? '/img/PL/p6.webp'}
+          src={imageUrl ?? "/img/PL/p6.webp"}
           layout="responsive"
           width={3200}
           height={2000}
@@ -178,21 +186,20 @@ const Modal = ({
         />
 
         <div className="p-4 text-center">
-          <h2 className="text-2xl font-bold text-black">{title}</h2> 
+          <h2 className="text-2xl font-bold text-black">{title}</h2>
           <p className="text-lg text-black">{description}</p>
         </div>
-        
+
         <div className="absolute inset-y-0 flex justify-between items-center w-full px-4">
           <button
             onClick={onPrevious}
             className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
           >
             <ChevronLeft size={34} />
-            
           </button>
           <button
             onClick={onNext}
-            className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400 "
+            className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
           >
             <ChevronRight size={34} />
           </button>
@@ -205,7 +212,7 @@ const Modal = ({
 type CardType = {
   url: string;
   title: string;
-  description: string; 
+  description: string;
   id: number;
 };
 
@@ -231,7 +238,8 @@ const cards: CardType[] = [
   {
     url: "/img/PL/p2.webp",
     title: "Fotos pensadas al detalle",
-    description: "Nos dedicamos a pensar las fotos en base de la experiencia del usuario.",
+    description:
+      "Nos dedicamos a pensar las fotos en base de la experiencia del usuario.",
     id: 4,
   },
   {
@@ -240,7 +248,7 @@ const cards: CardType[] = [
     description: "Fotografías de interiores de alta calidad",
     id: 5,
   },
-  { 
+  {
     url: "/img/CVII/1.webp",
     title: "Fotografía de arquitectura",
     description: "A modern kitchen with elegant finishes.",
@@ -248,4 +256,4 @@ const cards: CardType[] = [
   },
 ];
 
-export default Example; 
+export default Example;
