@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const Example = () => {
   return (
@@ -12,15 +12,7 @@ const Example = () => {
 
 const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["3%", "-30%"]);
-
   const [isSticky, setIsSticky] = useState(false);
-  const [stickyDuration, setStickyDuration] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
 
@@ -32,10 +24,6 @@ const HorizontalScrollCarousel = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsSticky(true);
-            setStickyDuration(true);
-            setTimeout(() => {
-              setStickyDuration(false);
-            }, 3000);
           } else {
             setIsSticky(false);
           }
@@ -73,15 +61,40 @@ const HorizontalScrollCarousel = () => {
     setSelectedCardIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : cards.length - 1));
   };
 
+  const scrollCarousel = (direction: "left" | "right") => {
+    const container = targetRef.current;
+    if (container) {
+      const scrollAmount = direction === "left" ? -container.clientWidth / 2 : container.clientWidth / 2; // Cambiar el desplazamiento a la mitad del ancho del contenedor
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <section ref={targetRef} className="relative h-[100vh] bg-[--secondary]">
-        <div className={`sticky top-0 flex h-screen items-center overflow-hidden transition-all duration-300 ${isSticky || stickyDuration ? "bg-[--secondary]" : ""}`}>
-          <motion.div style={{ x }} className="flex gap-4">
+        <div className={`sticky top-0 flex h-screen items-center overflow-hidden transition-all duration-300 ${isSticky ? "bg-[--secondary]" : ""}`}>
+          
+          {/* Botón de flecha izquierda en el componente principal */}
+          <button
+            onClick={() => scrollCarousel("left")}
+            className="absolute left-0 z-10 p-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+          >
+            {"<"}
+          </button>
+
+          <div className="flex gap-4">
             {cards.map((card, index) => (
               <Card card={card} key={card.id} onClick={() => handleImageClick(index)} />
             ))}
-          </motion.div>
+          </div>
+
+          {/* Botón de flecha derecha en el componente principal */}
+          <button
+            onClick={() => scrollCarousel("right")}
+            className="absolute right-0 z-10 p-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+          >
+            {">"}
+          </button>
         </div>
       </section>
 
@@ -111,7 +124,7 @@ const Card = ({ card, onClick }: { card: CardType; onClick: () => void }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="h-[60vw] sm:h-[450px] transition-transform duration-300 group-hover:scale-110"
+        className="h-[60vw] sm:h-[450px]"
       ></div>
 
       <div className="p-4">
@@ -148,7 +161,6 @@ const Modal = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
       <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto w-[90vw] sm:w-auto">
-       
         <button
           className="absolute top-2 right-2 text-black text-xl z-10"
           onClick={onClose}
@@ -173,24 +185,22 @@ const Modal = ({
         <div className="absolute inset-y-0 flex justify-between items-center w-full px-4">
           <button
             onClick={onPrevious}
-            disabled={currentIndex === 0}
             className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
           >
-            {"<"}
+            <ChevronLeft size={34} />
+            
           </button>
           <button
             onClick={onNext}
-            disabled={currentIndex === totalImages - 1}
-            className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
+            className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400 "
           >
-            {">"}
+            <ChevronRight size={34} />
           </button>
         </div>
       </div>
     </div>
   );
 };
-
 
 type CardType = {
   url: string;
