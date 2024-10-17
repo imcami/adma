@@ -37,9 +37,9 @@ export default function Home() {
       className={`fixed top-0 left-0 w-full z-50 bg-opacity-90 backdrop-blur-md shadow-md transition-all ${
         scrolled ? "bg-white border-b-gray-90 border-b-10 " : "bg-transparent "
       }`}
-      initial={{ y: -100 }} 
-      animate={{ y: 0 }} 
-      transition={{ duration: 0.5 }} 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto flex justify-between items-center py-2 px-6">
         {/* Logo */}
@@ -55,24 +55,22 @@ export default function Home() {
         </Link>
 
         {/* Navigation links */}
-        <nav className="hidden sm:flex justify-center w-full">
+        <nav className="hidden md:flex justify-center w-full">
           <NavigationMenu>
-            <NavigationMenuList className="flex gap-8 items-center">
+            <NavigationMenuList className="flex gap-4 md:gap-2 md:text-medium lg:gap-8 items-center">
               {links.map((link) => (
-                <NavigationMenuItem 
-                className="hover:scale-110 " key={link.url}>
+                <NavigationMenuItem className="hover:scale-110 " key={link.url}>
                   <NavigationMenuLink asChild>
-                  <Link
-  href={link.url}
-  className={`font-sans font-semibold drop-shadow-sm transition-colors duration-300 ${
-    scrolled
-      ? "text-[--foreground] hover:text-green-600 "
-      : "text-[--background]  hover:text-yellow-200 " 
-  }`}
->
-  {link.name}
-</Link>
-
+                    <Link
+                      href={link.url}
+                      className={`font-sans font-semibold drop-shadow-sm transition-colors duration-300 ${
+                        scrolled
+                          ? "text-[--foreground] hover:text-green-600 "
+                          : "text-[--background] hover:text-yellow-200 "
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
@@ -101,15 +99,16 @@ export default function Home() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button onClick={toggleMenu} className="text-black sm:hidden p-2">
+        <button onClick={toggleMenu} className="text-black md:hidden p-2">
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
         {/* Mobile Dropdown Menu */}
         {isMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-lg sm:hidden">
+          <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
             {links.map((link) => (
               <Link
+                onClick={() => setIsMenuOpen(false)}
                 key={link.url}
                 href={link.url}
                 className="block p-4 text-black hover:bg-gray-100"

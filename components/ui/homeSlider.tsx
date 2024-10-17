@@ -4,10 +4,8 @@ import Image from "next/image";
 
 const Example = () => {
   return (
-    <div className="bg-neutral-200 ">
-      
+    <div className="bg-neutral-200">
       <HorizontalScrollCarousel />
-      
     </div>
   );
 };
@@ -79,7 +77,7 @@ const HorizontalScrollCarousel = () => {
     <>
       <section ref={targetRef} className="relative h-[100vh] bg-[--secondary]">
         <div className={`sticky top-0 flex h-screen items-center overflow-hidden transition-all duration-300 ${isSticky || stickyDuration ? "bg-[--secondary]" : ""}`}>
-          <motion.div style={{ x }} className="flex gap-4 ">
+          <motion.div style={{ x }} className="flex gap-4">
             {cards.map((card, index) => (
               <Card card={card} key={card.id} onClick={() => handleImageClick(index)} />
             ))}
@@ -106,19 +104,19 @@ const HorizontalScrollCarousel = () => {
 
 const Card = ({ card, onClick }: { card: CardType; onClick: () => void }) => {
   return (
-    <div className="group relative w-[450px] mt-52 overflow-hidden bg-lime-900 cursor-pointer" onClick={onClick}>
+    <div className="group relative w-[90vw] sm:w-[450px] mt-52 overflow-hidden bg-lime-900 cursor-pointer" onClick={onClick}>
       <div
         style={{
           backgroundImage: `url(${card.url})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="h-[450px] transition-transform duration-300 group-hover:scale-110"
+        className="h-[60vw] sm:h-[450px] transition-transform duration-300 group-hover:scale-110"
       ></div>
 
       <div className="p-4">
-        <p className="text-4xl font-black uppercase text-[--secondary]">{card.title}</p>
-        <p className="text-lg text-[--secondary]">{card.description}</p>
+        <p className="text-2xl sm:text-4xl font-black uppercase text-[--secondary]">{card.title}</p>
+        <p className="text-md sm:text-lg text-[--secondary]">{card.description}</p>
       </div>
     </div>
   );
@@ -148,8 +146,8 @@ const Modal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 scroll-smooth">
-      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-auto mx-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto w-[90vw] sm:w-auto">
        
         <button
           className="absolute top-2 right-2 text-black text-xl z-10"
@@ -158,15 +156,13 @@ const Modal = ({
           &times;
         </button>
         
-       
         <Image
-          src={imageUrl ?? '/img/PL/p6.webp ' }
-          layout="responsive" 
-          width={3200} 
-          height={2000} 
-          alt={title} 
-          className="w-full h-auto object-cover" 
-          style={{ maxHeight: '80vh' }} 
+          src={imageUrl ?? '/img/PL/p6.webp'}
+          layout="responsive"
+          width={3200}
+          height={2000}
+          alt={title}
+          className="w-full h-auto object-cover"
         />
 
         <div className="p-4 text-center">
@@ -194,6 +190,7 @@ const Modal = ({
     </div>
   );
 };
+
 
 type CardType = {
   url: string;

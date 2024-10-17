@@ -40,7 +40,7 @@ export default function Home() {
         
 
           {/* Sección de inicio */}
-          <main className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+          <main >
             <Hero />
           </main>
 

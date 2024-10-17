@@ -52,10 +52,6 @@ function ContactForm() {
     const handleScroll = () => {
       if (contactRef.current) {
         const rect = contactRef.current.getBoundingClientRect();
-
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-          // Aquí se eliminó setInView
-        }
       }
     };
 
@@ -68,15 +64,15 @@ function ContactForm() {
   return (
     <div
       ref={contactRef}
-      className="min-h-screen mt-0 flex flex-col items-center justify-center mb-32  sm:px-8 lg:px-16 bg-cover bg-center backdrop-blur"
+      className="min-h-screen flex flex-col items-center justify-center mb-32 bg-cover bg-center backdrop-blur px-4 lg:px-16"
       style={{ backgroundImage: "url('/img/CVII/2.webp')" }}
     >
       <div>
         <SectionHeading>
-          <span className="text-4xl"> Contáctanos </span>
+          <span className="text-4xl sm:text-3xl"> Contáctanos </span>
         </SectionHeading>
         <div>
-          <p className="flex flex-col text-lg sm:flex-row text-justify m-3 p-3 font-light text-md sm:max-w-3xl ">
+          <p className="text-lg sm:text-base text-justify m-3 p-3 font-light sm:max-w-3xl">
             Contáctanos en&nbsp;
             <a className="underline" href="mailto:adma.reph@gmail.com">
               adma.reph@gmail.com
@@ -118,7 +114,7 @@ function ContactForm() {
         />
 
         <Button
-          className="group flex items-center justify-center gap-2 h-[3rem] font-sans text-md  w-[8rem] sm:w-[10rem] bg-lime-900 text-white rounded-full shadow-md transition-all hover:bg-lime-700 focus:scale-110"
+          className="group flex items-center justify-center gap-2 h-[3rem] font-sans text-md w-[8rem] sm:w-[10rem] bg-lime-900 text-white rounded-full shadow-md transition-all hover:bg-lime-700 focus:scale-110"
           type="submit"
           disabled={loading}
         >

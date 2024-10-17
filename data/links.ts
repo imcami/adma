@@ -10,6 +10,7 @@ const links: links[] = [
     { name: 'Checklist antes de la sesión', url: '#checklist' },
     { name: 'Sobre nosotros', url: '#nosotros' },
     { name: 'Contacto', url: '#contacto' },
+    
 
   ];
   
