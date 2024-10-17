@@ -74,26 +74,26 @@ const HorizontalScrollCarousel = () => {
       <section ref={targetRef} className="relative h-[100vh] bg-[--secondary]">
         <div className={`sticky top-0 flex h-screen items-center overflow-hidden transition-all duration-300 ${isSticky ? "bg-[--secondary]" : ""}`}>
           
-          {/* Botón de flecha izquierda en el componente principal */}
+
           <button
             onClick={() => scrollCarousel("left")}
-            className="absolute left-0 z-10 p-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+            className="absolute left-0 z-10 p-2 bg-black rounded-lg hover:bg-gray-400"
           >
-            {"<"}
+            <ChevronLeft size={34} />
           </button>
 
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             {cards.map((card, index) => (
-              <Card card={card} key={card.id} onClick={() => handleImageClick(index)} />
+              <Card card={card} key={card.id} onClick={() => handleImageClick(index )} />
             ))}
           </div>
 
           {/* Botón de flecha derecha en el componente principal */}
           <button
             onClick={() => scrollCarousel("right")}
-            className="absolute right-0 z-10 p-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+            className="absolute right-0 z-10 p-2 bg-black rounded-lg hover:bg-gray-400"
           >
-            {">"}
+         <ChevronRight size={34} />
           </button>
         </div>
       </section>
@@ -162,7 +162,7 @@ const Modal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
       <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto w-[90vw] sm:w-auto">
         <button
-          className="absolute top-2 right-2 text-black text-xl z-10"
+          className="absolute top-2 right-9 text-black text-semibold text-4xl z-10"
           onClick={onClose}
         >
           &times;
