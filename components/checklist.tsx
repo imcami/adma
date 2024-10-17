@@ -51,21 +51,24 @@ const Checklist = () => {
                 <li>
                   • Limpiar a fondo: Asegúrate de que todos los espacios estén
                   limpios. Presta especial atención a ventanas, pisos y baños.
-                  Elimina el polvo y las telarañas. Un espacio limpio se verá más atractivo en las fotos. 
-                  Asegurate que no haya platos sucios en la cocina.
-
+                  Elimina el polvo y las telarañas. Un espacio limpio se verá
+                  más atractivo en las fotos. Asegurate que no haya platos
+                  sucios en la cocina.
                 </li>
                 <li>
                   • Iluminación: Abre cortinas y persianas para permitir la
-                  entrada de luz natural. La luz suave hace que los espacios se vean más acogedores. 
-                  Adicionalmente revisa que todas las luces de la casa funcionen y cambia los focos que estén quemados si los hay.
-
+                  entrada de luz natural. La luz suave hace que los espacios se
+                  vean más acogedores. Adicionalmente revisa que todas las luces
+                  de la casa funcionen y cambia los focos que estén quemados si
+                  los hay.
                 </li>
                 <li>
-                  • Organización del Mobiliario: Coloca los muebles de manera que fluyan bien y no bloqueen el paso. Asegúrate de que la disposición resalte las mejores características de cada habitación.
-Considera la posibilidad de reubicar o retirar muebles que hagan que el espacio se vea reducido.
-Las plantas pueden agregar un toque de vida y color sin ser abrumadoras.
-
+                  • Organización del Mobiliario: Coloca los muebles de manera
+                  que fluyan bien y no bloqueen el paso. Asegúrate de que la
+                  disposición resalte las mejores características de cada
+                  habitación. Considera la posibilidad de reubicar o retirar
+                  muebles que hagan que el espacio se vea reducido. Las plantas
+                  pueden agregar un toque de vida y color sin ser abrumadoras.
                 </li>
               </ul>
             </AccordionContent>
@@ -100,9 +103,10 @@ Las plantas pueden agregar un toque de vida y color sin ser abrumadoras.
         <CardContent className="p-6">
           <ul className="space-y-4 text-lg text-yellow-400 leading-relaxed sm:text-base">
             <li>
-            Agrega toallas limpias y bien dobladas en los baños, y asegúrate de que la cocina esté ordenada con utensilios guardados.
-Añade algunas decoraciones sutiles para darle vida a los espacios, como cojines, manteles delicados, bandejas, cuadros…
-
+              Agrega toallas limpias y bien dobladas en los baños, y asegúrate
+              de que la cocina esté ordenada con utensilios guardados. Añade
+              algunas decoraciones sutiles para darle vida a los espacios, como
+              cojines, manteles delicados, bandejas, cuadros…
             </li>
             <li>Las mascotas deben estar fuera del hogar.</li>
             <li>
