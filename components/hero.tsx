@@ -39,6 +39,16 @@ function Hero() {
           className="absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-8"
         >
           <div className="text-center text-[--tertiary] w-full md:w-1/2">
+          <div className=' items-center pt-0'>
+            <Image
+              src="/logo-transparente.png"
+              alt="ADMA Real Estate Photography Logo"
+              width={600}
+              height={200}
+             
+              className="inline-block "
+            />
+          </div>
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-shadow-xl bg-clip-text text-transparent bg-gradient-to-r from-green-200 to-lime-300">
               Capturamos la Esencia de tu Propiedad
             </h1>
