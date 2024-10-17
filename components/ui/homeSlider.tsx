@@ -104,17 +104,17 @@ const HorizontalScrollCarousel = () => {
 
 
       {isModalOpen && selectedCardIndex !== null && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          imageUrl={cards[selectedCardIndex].url}
-          title={cards[selectedCardIndex].title}
-          description={cards[selectedCardIndex].description}
-          onNext={handleNextImage}
-          onPrevious={handlePreviousImage}
-          totalImages={cards.length}
-          currentIndex={selectedCardIndex}
-        />
+      <Modal 
+      isOpen={isModalOpen} 
+      onClose={handleCloseModal} 
+      imageUrl={cards[selectedCardIndex].url} 
+      title={cards[selectedCardIndex].title} 
+      description={cards[selectedCardIndex].description}
+      onNext={handleNextImage}
+      onPrevious={handlePreviousImage}
+      currentIndex={selectedCardIndex}
+    />
+    
       )}
     </>
   );
@@ -123,7 +123,7 @@ const HorizontalScrollCarousel = () => {
 const Card = ({ card, onClick }: { card: CardType; onClick: () => void }) => {
   return (
     <div
-      className="group relative w-[980vh] sm:w-[450px] mt-52 overflow-hidden bg-lime-900 cursor-pointer"
+      className="group relative w-[980vw] hover:scale sm:w-[450px] mt-32  bg-lime-900 cursor-pointer"
       onClick={onClick}
     >
       <div
@@ -155,6 +155,7 @@ const Modal = ({
   description,
   onNext,
   onPrevious,
+  currentIndex, 
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -163,12 +164,13 @@ const Modal = ({
   description: string;
   onNext: () => void;
   onPrevious: () => void;
+  currentIndex: number; 
 }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto w-[90vw] sm:w-auto">
+      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto w-[70vh] sm:w-auto">
         <button
           className="absolute top-2 right-9 text-black text-semibold text-4xl z-10"
           onClick={onClose}
@@ -185,12 +187,13 @@ const Modal = ({
           className="w-full h-auto object-cover"
         />
 
-        <div className="p-4 text-center">
+        <div className="p-8 text-center">
           <h2 className="text-2xl font-bold text-black">{title}</h2>
           <p className="text-lg text-black">{description}</p>
+          <p className="text-lg text-black">{currentIndex + 1} / {cards.length}</p>
         </div>
 
-        <div className="absolute inset-y-0 flex justify-between items-center w-full px-4">
+        <div className="absolute inset-y-0 flex justify-between items-center w-full  px-8">
           <button
             onClick={onPrevious}
             className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
@@ -208,7 +211,6 @@ const Modal = ({
     </div>
   );
 };
-
 type CardType = {
   url: string;
   title: string;
