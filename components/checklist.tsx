@@ -42,16 +42,30 @@ const Checklist = () => {
                   puedan imaginarse viviendo allí.
                 </li>
                 <li>
+                  • Despeja superficies, como mesas y encimeras, para que las
+                  áreas se vean limpias y ordenadas. En los baños quita cepillos
+                  de dientes y utensilios u objetos que lo muestren desordenado
+                  Esconde todos los cestos de basura.
+                </li>
+
+                <li>
                   • Limpiar a fondo: Asegúrate de que todos los espacios estén
                   limpios. Presta especial atención a ventanas, pisos y baños.
+                  Elimina el polvo y las telarañas. Un espacio limpio se verá más atractivo en las fotos. 
+                  Asegurate que no haya platos sucios en la cocina.
+
                 </li>
                 <li>
                   • Iluminación: Abre cortinas y persianas para permitir la
-                  entrada de luz natural.
+                  entrada de luz natural. La luz suave hace que los espacios se vean más acogedores. 
+                  Adicionalmente revisa que todas las luces de la casa funcionen y cambia los focos que estén quemados si los hay.
+
                 </li>
                 <li>
-                  • Organización del Mobiliario: Coloca los muebles de manera
-                  que fluyan bien y no bloqueen el paso.
+                  • Organización del Mobiliario: Coloca los muebles de manera que fluyan bien y no bloqueen el paso. Asegúrate de que la disposición resalte las mejores características de cada habitación.
+Considera la posibilidad de reubicar o retirar muebles que hagan que el espacio se vea reducido.
+Las plantas pueden agregar un toque de vida y color sin ser abrumadoras.
+
                 </li>
               </ul>
             </AccordionContent>
@@ -69,7 +83,9 @@ const Checklist = () => {
             <AccordionContent className="bg-gray-50 p-6 text-lg sm:text-base">
               <ul className="space-y-3 text-gray-600 leading-relaxed">
                 <li>• Mantén el jardín o área exterior bien cuidado.</li>
-                <li>• Corta el césped, recorta arbustos y retira hojas muertas.</li>
+                <li>
+                  • Corta el césped, recorta arbustos y retira hojas muertas.
+                </li>
                 <li>• Asegúrate de que la entrada sea acogedora.</li>
               </ul>
             </AccordionContent>
@@ -84,13 +100,16 @@ const Checklist = () => {
         <CardContent className="p-6">
           <ul className="space-y-4 text-lg text-yellow-400 leading-relaxed sm:text-base">
             <li>
-              Agrega toallas limpias y bien dobladas en los baños, y asegúrate
-              de que la cocina esté ordenada.
+            Agrega toallas limpias y bien dobladas en los baños, y asegúrate de que la cocina esté ordenada con utensilios guardados.
+Añade algunas decoraciones sutiles para darle vida a los espacios, como cojines, manteles delicados, bandejas, cuadros…
+
             </li>
             <li>Las mascotas deben estar fuera del hogar.</li>
             <li>
               <div className="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700">
-                <strong>Revisión Final:</strong> Antes de la sesión, da un último vistazo a cada habitación para asegurarte de que todo esté en su lugar.
+                <strong>Revisión Final:</strong> Antes de la sesión, da un
+                último vistazo a cada habitación para asegurarte de que todo
+                esté en su lugar.
               </div>
             </li>
           </ul>
