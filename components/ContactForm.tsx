@@ -52,6 +52,10 @@ function ContactForm() {
     const handleScroll = () => {
       if (contactRef.current) {
         const rect = contactRef.current.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2) {
+          contactRef.current.style.opacity = "1";
+          contactRef.current.style.transform = "translateY(0)";
+        }
       }
     };
 
