@@ -50,6 +50,7 @@ const HorizontalScrollCarousel = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedCardIndex(null);
+
   };
 
   const handleNextImage = () => {
@@ -146,7 +147,6 @@ const Card = ({ card, onClick }: { card: CardType; onClick: () => void }) => {
     </div>
   );
 };
-
 const Modal = ({
   isOpen,
   onClose,
@@ -166,11 +166,31 @@ const Modal = ({
   onPrevious: () => void;
   currentIndex: number; 
 }) => {
+  // Solo renderiza si el modal está abierto
   if (!isOpen) return null;
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      } else if (event.key === "ArrowRight") {
+        onNext();
+      } else if (event.key === "ArrowLeft") {
+        onPrevious();
+      }
+    };
+
+    // Agregar el listener para el evento de teclado
+    window.addEventListener("keydown", handleKeyDown);
+    
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose, onNext, onPrevious]); 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto w-[70vh] sm:w-auto">
+      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden mx-auto w-[98vh] sm:w-[1200px] my-10"> {/* Aumentado el ancho a 1000px */}
         <button
           className="absolute top-2 right-9 text-black text-semibold text-4xl z-10"
           onClick={onClose}
@@ -184,7 +204,7 @@ const Modal = ({
           width={3200}
           height={2000}
           alt={title}
-          className="w-full h-auto object-cover"
+          className="w-full flex-shrink-0 h-auto object-cover"
         />
 
         <div className="p-8 text-center">
@@ -193,24 +213,31 @@ const Modal = ({
           <p className="text-lg text-black">{currentIndex + 1} / {cards.length}</p>
         </div>
 
-        <div className="absolute inset-y-0 flex justify-between items-center w-full  px-8">
+        <div className="absolute inset-y-8 flex justify-between items-center w-full px-2 ">
           <button
             onClick={onPrevious}
-            className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
+            className="  rounded-lg bg-gray-300 hover:bg-gray-200 hover:opacity-70 opacity-70"
           >
-            <ChevronLeft size={34} />
+            <ChevronLeft size={44} />
           </button>
           <button
             onClick={onNext}
-            className="bg-gray-300 p-2 rounded-lg hover:bg-gray-400"
+            className="bg-gray-300  rounded-lg hover:bg-gray-200 hover:opacity-70 opacity-70"
           >
-            <ChevronRight size={34} />
+            <ChevronRight size={44} />
           </button>
         </div>
       </div>
     </div>
   );
 };
+
+
+
+
+
+
+
 type CardType = {
   url: string;
   title: string;
