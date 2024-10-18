@@ -190,7 +190,7 @@ const Modal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden mx-auto w-[98vh] sm:w-[1200px] my-10"> {/* Aumentado el ancho a 1000px */}
+      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden mx-auto w-[98vh] sm:w-[1200px] my-10"> 
         <button
           className="absolute top-2 right-9 text-black text-semibold text-4xl z-10"
           onClick={onClose}
