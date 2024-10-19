@@ -166,10 +166,10 @@ const Modal = ({
   onPrevious: () => void;
   currentIndex: number; 
 }) => {
-  // Solo renderiza si el modal está abierto
-  if (!isOpen) return null;
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onClose();
@@ -186,7 +186,10 @@ const Modal = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose, onNext, onPrevious]); 
+  }, [isOpen, onClose, onNext, onPrevious]);
+
+  // Solo renderiza si el modal está abierto
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
@@ -216,13 +219,13 @@ const Modal = ({
         <div className="absolute inset-y-8 flex justify-between items-center w-full px-2 ">
           <button
             onClick={onPrevious}
-            className="  rounded-lg bg-gray-300 hover:bg-gray-200 hover:opacity-70 opacity-70"
+            className="rounded-lg bg-gray-300 hover:bg-gray-200 hover:opacity-70 opacity-70"
           >
             <ChevronLeft size={44} />
           </button>
           <button
             onClick={onNext}
-            className="bg-gray-300  rounded-lg hover:bg-gray-200 hover:opacity-70 opacity-70"
+            className="bg-gray-300 rounded-lg hover:bg-gray-200 hover:opacity-70 opacity-70"
           >
             <ChevronRight size={44} />
           </button>
@@ -231,6 +234,7 @@ const Modal = ({
     </div>
   );
 };
+
 
 
 
